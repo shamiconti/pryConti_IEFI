@@ -17,7 +17,7 @@ namespace pryConti_IEFI
             InitializeComponent();
         }
 
-        // Estas dos variables se completan desde frmLogin
+        //Estas dos variables se completan desde frmLogin
         public string usuario;
         public int idCategoria;
 
@@ -33,10 +33,13 @@ namespace pryConti_IEFI
         private void frmMain_Load(object sender, EventArgs e)
         {
             temporizador.Start();
+            lblUsuario.Text = usuario;
+            lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
             if (idCategoria == 2) //Operador
             {
                 usuariosToolStripMenuItem.Visible = false; //Desactiva el botón de Usuarios
+                administrarTareasYLugaresToolStripMenuItem.Visible = false;
             }
         }
 
@@ -68,10 +71,23 @@ namespace pryConti_IEFI
             frmTareas.ShowDialog();
         }
 
-        private void administrarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void administrarTareasYLugaresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAdministrarTarea frmAdministrarTarea = new frmAdministrarTarea();
             frmAdministrarTarea.ShowDialog();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult rta = MessageBox.Show("¿Estás seguro de que querés cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (rta == DialogResult.Yes)
+            {
+                frmLogin frmlogin = new frmLogin();
+                frmlogin.Show();
+                
+                this.Close();
+            }
         }
     }
 }

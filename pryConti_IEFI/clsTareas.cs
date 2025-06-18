@@ -183,6 +183,86 @@ namespace pryConti_IEFI
             }
         }
 
+        public DataTable MostrarTarea()
+        {
+            try
+            {
+                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
+                {
+                    string consulta = "SELECT * FROM Tarea";
+                    OleDbCommand cmd = new OleDbCommand(consulta, conexionBD);
+                    OleDbDataAdapter adaptador = new OleDbDataAdapter(cmd);
+                    DataTable tabla = new DataTable();
+                    adaptador.Fill(tabla);
+                    return tabla;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar las tareas: " + ex.Message);
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region LugarCRUD
+
+        public void AgregarLugarCRUD(string nombre)
+        {
+            using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+            {
+                string sql = "INSERT INTO Lugar (Nombre) VALUES (?)";
+                OleDbCommand cmd = new OleDbCommand(sql, conexion);
+                cmd.Parameters.AddWithValue("?", nombre);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void ModificarLugar(int idLugar, string nuevoNombre)
+        {
+            using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+            {
+                string sql = "UPDATE Lugar SET Nombre = ? WHERE IdLugar = ?";
+                OleDbCommand cmd = new OleDbCommand(sql, conexion);
+                cmd.Parameters.AddWithValue("?", nuevoNombre);
+                cmd.Parameters.AddWithValue("?", idLugar);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void EliminarLugar(int idLugar)
+        {
+            using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+            {
+                string sql = "DELETE FROM Lugar WHERE IdLugar = ?";
+                OleDbCommand cmd = new OleDbCommand(sql, conexion);
+                cmd.Parameters.AddWithValue("?", idLugar);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public DataTable MostrarLugar()
+        {
+            try
+            {
+                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
+                {
+                    string consulta = "SELECT * FROM Lugar";
+                    OleDbCommand cmd = new OleDbCommand(consulta, conexionBD);
+                    OleDbDataAdapter adaptador = new OleDbDataAdapter(cmd);
+                    DataTable tabla = new DataTable();
+                    adaptador.Fill(tabla);
+                    return tabla;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar los lugares: " + ex.Message);
+                return null;
+            }
+        }
+
         #endregion
     }
 }
