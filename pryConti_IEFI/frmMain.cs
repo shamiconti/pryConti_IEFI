@@ -39,7 +39,7 @@ namespace pryConti_IEFI
             if (idCategoria == 2) //Operador
             {
                 usuariosToolStripMenuItem.Visible = false; //Desactiva el botón de Usuarios
-                administrarTareasYLugaresToolStripMenuItem.Visible = false;
+                administrarToolStripMenuItem.Visible = false;
             }
         }
 
@@ -88,6 +88,18 @@ namespace pryConti_IEFI
                 
                 this.Close();
             }
+        }
+
+        private void administrarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAdministrarTarea frmAdministrarTarea1 = new frmAdministrarTarea();
+            frmAdministrarTarea1.ShowDialog();
+        }
+
+        private void administrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHistorial frmHistorial = new frmHistorial();
+            frmHistorial.ShowDialog();
         }
     }
 }
