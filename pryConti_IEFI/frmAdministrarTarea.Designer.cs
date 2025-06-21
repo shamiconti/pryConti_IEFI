@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdministrarTarea));
             this.tabAdministrar = new System.Windows.Forms.TabControl();
             this.tpTarea = new System.Windows.Forms.TabPage();
             this.dgvListarTarea = new System.Windows.Forms.DataGridView();
@@ -97,7 +98,7 @@
             // btnListarTarea
             // 
             this.btnListarTarea.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnListarTarea.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnListarTarea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnListarTarea.Location = new System.Drawing.Point(225, 301);
             this.btnListarTarea.Margin = new System.Windows.Forms.Padding(4);
             this.btnListarTarea.Name = "btnListarTarea";
@@ -125,7 +126,7 @@
             // 
             // btnEliminarTarea
             // 
-            this.btnEliminarTarea.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnEliminarTarea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnEliminarTarea.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEliminarTarea.Location = new System.Drawing.Point(393, 106);
             this.btnEliminarTarea.Name = "btnEliminarTarea";
@@ -137,7 +138,7 @@
             // 
             // btnAgregarTarea
             // 
-            this.btnAgregarTarea.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnAgregarTarea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnAgregarTarea.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAgregarTarea.Location = new System.Drawing.Point(39, 106);
             this.btnAgregarTarea.Name = "btnAgregarTarea";
@@ -183,7 +184,7 @@
             // 
             // btnModifcarTarea
             // 
-            this.btnModifcarTarea.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnModifcarTarea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnModifcarTarea.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnModifcarTarea.Location = new System.Drawing.Point(216, 106);
             this.btnModifcarTarea.Name = "btnModifcarTarea";
@@ -219,7 +220,7 @@
             // btnListarLugar
             // 
             this.btnListarLugar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnListarLugar.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnListarLugar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnListarLugar.Location = new System.Drawing.Point(225, 301);
             this.btnListarLugar.Margin = new System.Windows.Forms.Padding(4);
             this.btnListarLugar.Name = "btnListarLugar";
@@ -281,7 +282,7 @@
             // 
             // btnEliminarLugar
             // 
-            this.btnEliminarLugar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnEliminarLugar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnEliminarLugar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEliminarLugar.Location = new System.Drawing.Point(394, 106);
             this.btnEliminarLugar.Name = "btnEliminarLugar";
@@ -293,7 +294,7 @@
             // 
             // btnAgregarLugar
             // 
-            this.btnAgregarLugar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnAgregarLugar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnAgregarLugar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAgregarLugar.Location = new System.Drawing.Point(38, 106);
             this.btnAgregarLugar.Name = "btnAgregarLugar";
@@ -305,7 +306,7 @@
             // 
             // btnModificarLugar
             // 
-            this.btnModificarLugar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnModificarLugar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnModificarLugar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnModificarLugar.Location = new System.Drawing.Point(216, 106);
             this.btnModificarLugar.Name = "btnModificarLugar";
@@ -335,6 +336,7 @@
             this.ClientSize = new System.Drawing.Size(606, 364);
             this.Controls.Add(this.tabAdministrar);
             this.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAdministrarTarea";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

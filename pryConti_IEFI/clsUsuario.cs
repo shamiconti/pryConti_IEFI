@@ -228,5 +228,50 @@ namespace pryConti_IEFI
                 return null;
             }
         }
+
+        public void AgregarPersona(string nombre, string apellido, int dni, string telefono, string email, string direccion)
+        {
+            try
+            {
+                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
+                {
+                    string sql = "INSERT INTO Persona (Nombre, Apellido, DNI, Telefono, Email, Direccion) VALUES (?, ?, ?, ?, ?, ?)";
+                    OleDbCommand cmd = new OleDbCommand(sql, conexionBD);
+
+                    cmd.Parameters.AddWithValue("?", nombre);
+                    cmd.Parameters.AddWithValue("?", apellido);
+                    cmd.Parameters.AddWithValue("?", dni);
+                    cmd.Parameters.AddWithValue("?", telefono);
+                    cmd.Parameters.AddWithValue("?", email);
+                    cmd.Parameters.AddWithValue("?", direccion);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar persona:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public DataTable ListarPersonas()
+        {
+            try
+            {
+                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
+                {
+                    string sql = "SELECT * FROM Persona";
+                    OleDbDataAdapter adaptador = new OleDbDataAdapter(sql, conexionBD);
+                    DataTable tabla = new DataTable();
+                    adaptador.Fill(tabla);
+                    return tabla;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener personas:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

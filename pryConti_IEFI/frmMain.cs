@@ -103,5 +103,11 @@ namespace pryConti_IEFI
             frmHistorial frmHistorial = new frmHistorial();
             frmHistorial.ShowDialog();
         }
+
+        private void datosPersonalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDatosPersonales frmDatosPersonales = new frmDatosPersonales();
+            frmDatosPersonales.ShowDialog();
+        }
     }
 }

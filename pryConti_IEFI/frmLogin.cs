@@ -32,7 +32,7 @@ namespace pryConti_IEFI
                 usuario = fila["Usuario"].ToString();
                 idCategoria = Convert.ToInt32(fila["IdCategoria"]);
 
-                MessageBox.Show("Bienvenido, " + usuario + ".", "Acceso concedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bienvenido/a, " + usuario + ".", "Acceso concedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 frmMain nuevoForm = new frmMain();
                 nuevoForm.usuario = usuario;

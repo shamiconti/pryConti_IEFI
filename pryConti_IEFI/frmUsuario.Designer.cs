@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuario));
             this.tabUsuarios = new System.Windows.Forms.TabControl();
             this.tpAgregar = new System.Windows.Forms.TabPage();
             this.grpIngresarDatos = new System.Windows.Forms.GroupBox();
@@ -40,6 +41,8 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.tpModificar = new System.Windows.Forms.TabPage();
             this.grpModificar = new System.Windows.Forms.GroupBox();
+            this.lblSeleccionarUsuario = new System.Windows.Forms.Label();
+            this.cmbUsuarioModificar = new System.Windows.Forms.ComboBox();
             this.lblModificarCategoria = new System.Windows.Forms.Label();
             this.txtModificarContraseña = new System.Windows.Forms.TextBox();
             this.txtModificarUsuario = new System.Windows.Forms.TextBox();
@@ -55,8 +58,6 @@
             this.tpListar = new System.Windows.Forms.TabPage();
             this.dgvListar = new System.Windows.Forms.DataGridView();
             this.btnListar = new System.Windows.Forms.Button();
-            this.lblSeleccionarUsuario = new System.Windows.Forms.Label();
-            this.cmbUsuarioModificar = new System.Windows.Forms.ComboBox();
             this.tabUsuarios.SuspendLayout();
             this.tpAgregar.SuspendLayout();
             this.grpIngresarDatos.SuspendLayout();
@@ -110,7 +111,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAgregar.Location = new System.Drawing.Point(133, 137);
             this.btnAgregar.Name = "btnAgregar";
@@ -201,6 +202,25 @@
             this.grpModificar.TabStop = false;
             this.grpModificar.Text = "Modificar";
             // 
+            // lblSeleccionarUsuario
+            // 
+            this.lblSeleccionarUsuario.AutoSize = true;
+            this.lblSeleccionarUsuario.Location = new System.Drawing.Point(6, 24);
+            this.lblSeleccionarUsuario.Name = "lblSeleccionarUsuario";
+            this.lblSeleccionarUsuario.Size = new System.Drawing.Size(135, 16);
+            this.lblSeleccionarUsuario.TabIndex = 21;
+            this.lblSeleccionarUsuario.Text = "Seleccionar Usuario:";
+            // 
+            // cmbUsuarioModificar
+            // 
+            this.cmbUsuarioModificar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUsuarioModificar.FormattingEnabled = true;
+            this.cmbUsuarioModificar.Location = new System.Drawing.Point(147, 21);
+            this.cmbUsuarioModificar.Name = "cmbUsuarioModificar";
+            this.cmbUsuarioModificar.Size = new System.Drawing.Size(160, 24);
+            this.cmbUsuarioModificar.TabIndex = 20;
+            this.cmbUsuarioModificar.SelectedIndexChanged += new System.EventHandler(this.cmbUsuarioModificar_SelectedIndexChanged);
+            // 
             // lblModificarCategoria
             // 
             this.lblModificarCategoria.AutoSize = true;
@@ -246,7 +266,7 @@
             // 
             // btnModifcar
             // 
-            this.btnModifcar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnModifcar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnModifcar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnModifcar.Location = new System.Drawing.Point(147, 183);
             this.btnModifcar.Name = "btnModifcar";
@@ -300,7 +320,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEliminar.Location = new System.Drawing.Point(104, 68);
             this.btnEliminar.Name = "btnEliminar";
@@ -343,7 +363,7 @@
             // btnListar
             // 
             this.btnListar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnListar.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnListar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnListar.Location = new System.Drawing.Point(226, 236);
             this.btnListar.Margin = new System.Windows.Forms.Padding(4);
             this.btnListar.Name = "btnListar";
@@ -353,25 +373,6 @@
             this.btnListar.UseVisualStyleBackColor = false;
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
-            // lblSeleccionarUsuario
-            // 
-            this.lblSeleccionarUsuario.AutoSize = true;
-            this.lblSeleccionarUsuario.Location = new System.Drawing.Point(6, 24);
-            this.lblSeleccionarUsuario.Name = "lblSeleccionarUsuario";
-            this.lblSeleccionarUsuario.Size = new System.Drawing.Size(135, 16);
-            this.lblSeleccionarUsuario.TabIndex = 21;
-            this.lblSeleccionarUsuario.Text = "Seleccionar Usuario:";
-            // 
-            // cmbUsuarioModificar
-            // 
-            this.cmbUsuarioModificar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbUsuarioModificar.FormattingEnabled = true;
-            this.cmbUsuarioModificar.Location = new System.Drawing.Point(147, 21);
-            this.cmbUsuarioModificar.Name = "cmbUsuarioModificar";
-            this.cmbUsuarioModificar.Size = new System.Drawing.Size(160, 24);
-            this.cmbUsuarioModificar.TabIndex = 20;
-            this.cmbUsuarioModificar.SelectedIndexChanged += new System.EventHandler(this.cmbUsuarioModificar_SelectedIndexChanged);
-            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -380,6 +381,7 @@
             this.ClientSize = new System.Drawing.Size(620, 320);
             this.Controls.Add(this.tabUsuarios);
             this.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
