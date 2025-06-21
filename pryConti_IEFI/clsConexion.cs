@@ -22,7 +22,7 @@ namespace pryConti_IEFI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Error al conectar: " + ex.Message);
+                MessageBox.Show("Error al conectar:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return conexion;
         }

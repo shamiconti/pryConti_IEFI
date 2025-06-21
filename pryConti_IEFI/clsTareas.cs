@@ -31,7 +31,7 @@ namespace pryConti_IEFI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar combo de tareas: " + ex.Message);
+                MessageBox.Show("Error al cargar combo de tareas:\n" + ex.Message, "Error al cargar tareas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -55,7 +55,7 @@ namespace pryConti_IEFI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar combo de lugares: " + ex.Message);
+                MessageBox.Show("Error al cargar combo de lugares:\n" + ex.Message, "Error al cargar lugares", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion
@@ -120,7 +120,6 @@ namespace pryConti_IEFI
             }
         }
 
-
         public DataTable ObtenerListadoTareas()
         {
             try
@@ -131,8 +130,7 @@ namespace pryConti_IEFI
                 SELECT RegistroTarea.Fecha, Tarea.Nombre AS Tarea, Lugar.Nombre AS Lugar
                 FROM (RegistroTarea
                 INNER JOIN Tarea ON RegistroTarea.IdTarea = Tarea.IdTarea)
-                INNER JOIN Lugar ON RegistroTarea.IdLugar = Lugar.IdLugar
-            ";
+                INNER JOIN Lugar ON RegistroTarea.IdLugar = Lugar.IdLugar";
 
                     OleDbDataAdapter da = new OleDbDataAdapter(sql, conexion);
                     DataTable dt = new DataTable();
@@ -147,39 +145,84 @@ namespace pryConti_IEFI
             }
         }
 
+        public DataTable ObtenerTareas()
+        {
+            try
+            {
+                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
+                {
+                    string consulta = "SELECT * FROM RegistroTarea";
+                    OleDbCommand cmd = new OleDbCommand(consulta, conexionBD);
+                    OleDbDataAdapter adaptador = new OleDbDataAdapter(cmd);
+
+                    DataTable tabla = new DataTable();
+                    adaptador.Fill(tabla);
+                    return tabla;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener los registros:\n" + ex.Message, "Error al obtener tareas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #region TareaCRUD
 
         public void AgregarTareaCRUD(string nombre)
         {
-            using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+            try
             {
-                string sql = "INSERT INTO Tarea (Nombre) VALUES (?)";
-                OleDbCommand cmd = new OleDbCommand(sql, conexion);
-                cmd.Parameters.AddWithValue("?", nombre);
-                cmd.ExecuteNonQuery();
+                using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+                {
+                    string sql = "INSERT INTO Tarea (Nombre) VALUES (?)";
+                    OleDbCommand cmd = new OleDbCommand(sql, conexion);
+
+                    cmd.Parameters.AddWithValue("?", nombre);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar tarea:\n" + ex.Message, "Error al agregar tarea", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public void ModificarTarea(int idTarea, string nuevoNombre)
         {
-            using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+            try
             {
-                string sql = "UPDATE Tarea SET Nombre = ? WHERE IdTarea = ?";
-                OleDbCommand cmd = new OleDbCommand(sql, conexion);
-                cmd.Parameters.AddWithValue("?", nuevoNombre);
-                cmd.Parameters.AddWithValue("?", idTarea);
-                cmd.ExecuteNonQuery();
+                using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+                {
+                    string sql = "UPDATE Tarea SET Nombre = ? WHERE IdTarea = ?";
+                    OleDbCommand cmd = new OleDbCommand(sql, conexion);
+                    cmd.Parameters.AddWithValue("?", nuevoNombre);
+                    cmd.Parameters.AddWithValue("?", idTarea);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar tarea:\n" + ex.Message, "Error al modificar tarea", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public void EliminarTarea(int idTarea)
         {
-            using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+            try
             {
-                string sql = "DELETE FROM Tarea WHERE IdTarea = ?";
-                OleDbCommand cmd = new OleDbCommand(sql, conexion);
-                cmd.Parameters.AddWithValue("?", idTarea);
-                cmd.ExecuteNonQuery();
+                using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+                {
+                    string sql = "DELETE FROM Tarea WHERE IdTarea = ?";
+                    OleDbCommand cmd = new OleDbCommand(sql, conexion);
+                    cmd.Parameters.AddWithValue("?", idTarea);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar tarea:\n" + ex.Message, "Error al eliminar tarea", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -199,7 +242,7 @@ namespace pryConti_IEFI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al mostrar las tareas: " + ex.Message);
+                MessageBox.Show("Error al mostrar las tareas:\n" + ex.Message, "Error al mostrar tareas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -210,35 +253,56 @@ namespace pryConti_IEFI
 
         public void AgregarLugarCRUD(string nombre)
         {
-            using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+            try
             {
-                string sql = "INSERT INTO Lugar (Nombre) VALUES (?)";
-                OleDbCommand cmd = new OleDbCommand(sql, conexion);
-                cmd.Parameters.AddWithValue("?", nombre);
-                cmd.ExecuteNonQuery();
+                using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+                {
+                    string sql = "INSERT INTO Lugar (Nombre) VALUES (?)";
+                    OleDbCommand cmd = new OleDbCommand(sql, conexion);
+                    cmd.Parameters.AddWithValue("?", nombre);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar lugar:\n" + ex.Message, "Error al agregar lugar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public void ModificarLugar(int idLugar, string nuevoNombre)
         {
-            using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+            try
             {
-                string sql = "UPDATE Lugar SET Nombre = ? WHERE IdLugar = ?";
-                OleDbCommand cmd = new OleDbCommand(sql, conexion);
-                cmd.Parameters.AddWithValue("?", nuevoNombre);
-                cmd.Parameters.AddWithValue("?", idLugar);
-                cmd.ExecuteNonQuery();
+                using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+                {
+                    string sql = "UPDATE Lugar SET Nombre = ? WHERE IdLugar = ?";
+                    OleDbCommand cmd = new OleDbCommand(sql, conexion);
+                    cmd.Parameters.AddWithValue("?", nuevoNombre);
+                    cmd.Parameters.AddWithValue("?", idLugar);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar lugar:\n" + ex.Message, "Error al modificar lugar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public void EliminarLugar(int idLugar)
         {
-            using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+            try
             {
-                string sql = "DELETE FROM Lugar WHERE IdLugar = ?";
-                OleDbCommand cmd = new OleDbCommand(sql, conexion);
-                cmd.Parameters.AddWithValue("?", idLugar);
-                cmd.ExecuteNonQuery();
+                using (OleDbConnection conexion = clsConexion.ObtenerConexion())
+                {
+                    string sql = "DELETE FROM Lugar WHERE IdLugar = ?";
+                    OleDbCommand cmd = new OleDbCommand(sql, conexion);
+                    cmd.Parameters.AddWithValue("?", idLugar);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar lugar:\n" + ex.Message, "Error al eliminar lugar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -258,7 +322,7 @@ namespace pryConti_IEFI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al mostrar los lugares: " + ex.Message);
+                MessageBox.Show("Error al mostrar los lugares:\n" + ex.Message, "Error al mostrar lugares", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }

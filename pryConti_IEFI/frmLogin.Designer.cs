@@ -30,7 +30,7 @@
         {
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContraseña = new System.Windows.Forms.TextBox();
-            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnIngresar = new System.Windows.Forms.Button();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblCpntraseña = new System.Windows.Forms.Label();
             this.grpIngresarDatos = new System.Windows.Forms.GroupBox();
@@ -53,17 +53,17 @@
             this.txtContraseña.Size = new System.Drawing.Size(132, 22);
             this.txtContraseña.TabIndex = 1;
             // 
-            // btnAceptar
+            // btnIngresar
             // 
-            this.btnAceptar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAceptar.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnAceptar.Location = new System.Drawing.Point(351, 236);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(108, 41);
-            this.btnAceptar.TabIndex = 2;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = false;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnIngresar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnIngresar.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnIngresar.Location = new System.Drawing.Point(351, 236);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(108, 41);
+            this.btnIngresar.TabIndex = 2;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.UseVisualStyleBackColor = false;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // lblUsuario
             // 
@@ -104,7 +104,7 @@
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(471, 289);
             this.Controls.Add(this.grpIngresarDatos);
-            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.btnIngresar);
             this.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -113,7 +113,6 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.grpIngresarDatos.ResumeLayout(false);
             this.grpIngresarDatos.PerformLayout();
             this.ResumeLayout(false);
@@ -124,7 +123,7 @@
 
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtContraseña;
-        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblCpntraseña;
         private System.Windows.Forms.GroupBox grpIngresarDatos;

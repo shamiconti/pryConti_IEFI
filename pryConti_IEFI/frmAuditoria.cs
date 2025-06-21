@@ -20,17 +20,12 @@ namespace pryConti_IEFI
         private void frmAuditoria_Load(object sender, EventArgs e)
         {
             clsUsuario objUsuario = new clsUsuario();
-            DataTable tablaLogs = objUsuario.ObtenerLogs();
+            DataTable tabla = objUsuario.ObtenerLogs();
 
-            if (tablaLogs != null)
+            if (tabla != null)
             {
-                dgvAuditoria.DataSource = tablaLogs;
+                dgvAuditoria.DataSource = tabla;
             }
-        }
-
-        private void dgvAuditoria_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

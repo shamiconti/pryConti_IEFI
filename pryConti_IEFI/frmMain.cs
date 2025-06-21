@@ -12,11 +12,6 @@ namespace pryConti_IEFI
 {
     public partial class frmMain : Form
     {
-        public frmMain()
-        {
-            InitializeComponent();
-        }
-
         //Estas dos variables se completan desde frmLogin
         public string usuario;
         public int idCategoria;
@@ -24,6 +19,11 @@ namespace pryConti_IEFI
         int contadorTiempo = 0;
 
         clsUsuario objUsuario = new clsUsuario();
+
+        public frmMain()
+        {
+            InitializeComponent();
+        }
 
         private void temporizador_Tick(object sender, EventArgs e)
         {
@@ -38,8 +38,9 @@ namespace pryConti_IEFI
 
             if (idCategoria == 2) //Operador
             {
-                usuariosToolStripMenuItem.Visible = false; //Desactiva el botón de Usuarios
-                administrarToolStripMenuItem.Visible = false;
+                administradorToolStripMenuItem.Visible = false; //Desactiva el botón
+                toolStripMenuItem1.Visible = false;
+
             }
         }
 
@@ -50,7 +51,27 @@ namespace pryConti_IEFI
             TimeSpan tiempo = TimeSpan.FromSeconds(contadorTiempo);
             string tiempoTexto = tiempo.ToString(@"hh\:mm\:ss");
 
-            objUsuario.RegistrarLog(usuario, idCategoria, tiempoTexto);
+            try
+            {
+                objUsuario.RegistrarLog(usuario, idCategoria, tiempoTexto);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar el log:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult rta = MessageBox.Show("¿Estás seguro de que querés cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (rta == DialogResult.Yes)
+            {
+                frmLogin frmlogin = new frmLogin();
+                frmlogin.Show();
+
+                this.Close();
+            }
         }
 
         private void auditoriaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,32 +92,13 @@ namespace pryConti_IEFI
             frmTareas.ShowDialog();
         }
 
-        private void administrarTareasYLugaresToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tareasYLugaresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAdministrarTarea frmAdministrarTarea = new frmAdministrarTarea();
             frmAdministrarTarea.ShowDialog();
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult rta = MessageBox.Show("¿Estás seguro de que querés cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (rta == DialogResult.Yes)
-            {
-                frmLogin frmlogin = new frmLogin();
-                frmlogin.Show();
-                
-                this.Close();
-            }
-        }
-
-        private void administrarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frmAdministrarTarea frmAdministrarTarea1 = new frmAdministrarTarea();
-            frmAdministrarTarea1.ShowDialog();
-        }
-
-        private void administrarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void historialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmHistorial frmHistorial = new frmHistorial();
             frmHistorial.ShowDialog();

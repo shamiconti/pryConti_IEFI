@@ -11,7 +11,7 @@ namespace pryConti_IEFI
 {
     internal class clsUsuario
     {
-        // Busca usuario por nombre y contraseña, devuelve fila o null
+        //Busca usuario por nombre y contraseña, devuelve fila o null
         public DataRow BuscarUsuario(string usuario, string contraseña)
         {
             try
@@ -35,7 +35,7 @@ namespace pryConti_IEFI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al buscar usuario: " + ex.Message);
+                MessageBox.Show("Error al buscar usuario:\n" + ex.Message, "Error al buscar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -59,7 +59,7 @@ namespace pryConti_IEFI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar log: " + ex.Message);
+                MessageBox.Show("Error al registrar log:\n" + ex.Message, "Error al registrar log", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -80,7 +80,7 @@ namespace pryConti_IEFI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los logs: " + ex.Message);
+                MessageBox.Show("Error al obtener los logs:\n" + ex.Message, "Error al obtener logs", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -99,13 +99,13 @@ namespace pryConti_IEFI
                     adaptador.Fill(dt);
 
                     combo.DataSource = dt;
-                    combo.DisplayMember = "Nombre";        // Lo que ve el usuario
-                    combo.ValueMember = "IdCategoria";     // Lo que se guarda internamente
+                    combo.DisplayMember = "Nombre";        //Lo que ve el usuario
+                    combo.ValueMember = "IdCategoria";     //Lo que se guarda internamente
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar categorías: " + ex.Message);
+                MessageBox.Show("Error al cargar categorías:\n" + ex.Message, "Error al cargar combo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -121,16 +121,15 @@ namespace pryConti_IEFI
                     adaptador.Fill(dt);
 
                     combo.DataSource = dt;
-                    combo.DisplayMember = "Usuario";     // lo que ve el usuario
-                    combo.ValueMember = "IdUsuario";      // el valor real (id)
+                    combo.DisplayMember = "Usuario";
+                    combo.ValueMember = "IdUsuario";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar usuarios: " + ex.Message);
+                MessageBox.Show("Error al cargar usuarios:\n" + ex.Message, "Error al cargar combo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         public void AgregarUsuario(string usuario, string contraseña, int idCategoria)
         {
@@ -141,20 +140,21 @@ namespace pryConti_IEFI
                     string sql = "INSERT INTO Usuario (Usuario, Contraseña, IdCategoria, FechaCreado, FechaModificado) VALUES (?, ?, ?, ?, ?)";
 
                     OleDbCommand cmd = new OleDbCommand(sql, conexionBD);
-                    cmd.Parameters.AddWithValue("?", usuario);          // texto
-                    cmd.Parameters.AddWithValue("?", contraseña);       // texto
-                    cmd.Parameters.AddWithValue("?", idCategoria);      // número
-                    cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now;    // FechaCreado
-                    cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now;    // FechaModificado
+                    cmd.Parameters.AddWithValue("?", usuario);
+                    cmd.Parameters.AddWithValue("?", contraseña);
+                    cmd.Parameters.AddWithValue("?", idCategoria);
+                    cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now;    //FechaCreado
+                    cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now;    //FechaModificado
 
                     cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar usuario: " + ex.Message);
+                MessageBox.Show("Error al agregar usuario:\n" + ex.Message, "Error al agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
 
         public void EliminarUsuario(int idUsuario)
         {
@@ -170,45 +170,41 @@ namespace pryConti_IEFI
                     int filasAfectadas = cmd.ExecuteNonQuery();
 
                     if (filasAfectadas == 0)
-                        MessageBox.Show("No se encontró usuario con ese Id.");
+                        MessageBox.Show("No se encontró usuario con ese Id.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar usuario: " + ex.Message);
+                MessageBox.Show("Error al eliminar usuario:\n" + ex.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public void ModificarUsuario(string usuario, string contraseña, int idCategoria)
+        public void ModificarUsuario(int idUsuario, string nuevoNombre, string nuevaContraseña, int idCategoria)
         {
             try
             {
                 using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
                 {
-                    string update = "UPDATE Usuario SET Contraseña = ?, IdCategoria = ?, FechaModificado = ? WHERE Usuario = ?";
+                    string update = "UPDATE Usuario SET Usuario = ?, Contraseña = ?, IdCategoria = ?, FechaModificado = ? WHERE IdUsuario = ?";
 
                     OleDbCommand cmd = new OleDbCommand(update, conexionBD);
+                    cmd.Parameters.Add("?", OleDbType.VarChar).Value = nuevoNombre;
+                    cmd.Parameters.Add("?", OleDbType.VarChar).Value = nuevaContraseña;
+                    cmd.Parameters.Add("?", OleDbType.Integer).Value = idCategoria;
+                    cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now;
+                    cmd.Parameters.Add("?", OleDbType.Integer).Value = idUsuario;
 
-                    cmd.Parameters.AddWithValue("?", contraseña);
-                    cmd.Parameters.AddWithValue("?", idCategoria);
-                    cmd.Parameters.AddWithValue("?", DateTime.Now);
-                    cmd.Parameters.AddWithValue("?", usuario);
+                    int filas = cmd.ExecuteNonQuery();
 
-                    int filasAfectadas = cmd.ExecuteNonQuery();
-
-                    if (filasAfectadas == 0)
+                    if (filas == 0)
                     {
-                        MessageBox.Show("No se encontró el usuario para modificar.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Usuario actualizado correctamente.");
-                    }
+                        MessageBox.Show("No se encontró el usuario para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }   
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al modificar usuario: " + ex.Message);
+                MessageBox.Show("Error al modificar usuario:\n" + ex.Message, "Error al modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -218,7 +214,7 @@ namespace pryConti_IEFI
             {
                 using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
                 {
-                    string consulta = "SELECT Usuario, Contraseña, IdCategoria, FechaCreado, FechaModificado FROM Usuario";
+                    string consulta = "SELECT * FROM Usuario";
                     OleDbCommand cmd = new OleDbCommand(consulta, conexionBD);
                     OleDbDataAdapter adaptador = new OleDbDataAdapter(cmd);
                     DataTable tabla = new DataTable();
@@ -228,7 +224,7 @@ namespace pryConti_IEFI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los usuarios: " + ex.Message);
+                MessageBox.Show("Error al obtener los usuarios:\n" + ex.Message, "Error al obtener usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }

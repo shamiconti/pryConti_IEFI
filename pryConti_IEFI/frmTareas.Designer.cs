@@ -171,6 +171,7 @@
             this.rtbComentario.Size = new System.Drawing.Size(334, 96);
             this.rtbComentario.TabIndex = 8;
             this.rtbComentario.Text = "";
+            this.rtbComentario.TextChanged += new System.EventHandler(this.rtbComentario_TextChanged);
             // 
             // chkRecibo
             // 
@@ -181,6 +182,7 @@
             this.chkRecibo.TabIndex = 7;
             this.chkRecibo.Text = "Recibo";
             this.chkRecibo.UseVisualStyleBackColor = true;
+            this.chkRecibo.CheckedChanged += new System.EventHandler(this.chkRecibo_CheckedChanged);
             // 
             // chkSalario
             // 
@@ -191,6 +193,7 @@
             this.chkSalario.TabIndex = 6;
             this.chkSalario.Text = "Salario";
             this.chkSalario.UseVisualStyleBackColor = true;
+            this.chkSalario.CheckedChanged += new System.EventHandler(this.chkSalario_CheckedChanged);
             // 
             // chkVacaciones
             // 
@@ -201,6 +204,7 @@
             this.chkVacaciones.TabIndex = 5;
             this.chkVacaciones.Text = "Vacaciones";
             this.chkVacaciones.UseVisualStyleBackColor = true;
+            this.chkVacaciones.CheckedChanged += new System.EventHandler(this.chkVacaciones_CheckedChanged);
             // 
             // chkEstudio
             // 
@@ -211,6 +215,7 @@
             this.chkEstudio.TabIndex = 4;
             this.chkEstudio.Text = "Estudio";
             this.chkEstudio.UseVisualStyleBackColor = true;
+            this.chkEstudio.CheckedChanged += new System.EventHandler(this.chkEstudio_CheckedChanged);
             // 
             // chkInsumo
             // 
@@ -221,6 +226,7 @@
             this.chkInsumo.TabIndex = 3;
             this.chkInsumo.Text = "Insumo";
             this.chkInsumo.UseVisualStyleBackColor = true;
+            this.chkInsumo.CheckedChanged += new System.EventHandler(this.chkInsumo_CheckedChanged);
             // 
             // lblLicencia
             // 

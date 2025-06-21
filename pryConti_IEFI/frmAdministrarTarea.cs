@@ -33,21 +33,25 @@ namespace pryConti_IEFI
 
         private void btnModifcar_Click(object sender, EventArgs e)
         {
-            if (cmbTarea.SelectedValue != null)
-            {
-                int id = Convert.ToInt32(cmbTarea.SelectedValue);
-                string nuevoNombre = txtTarea.Text.Trim();
+            int id = Convert.ToInt32(cmbTarea.SelectedValue);
+            string nuevoNombre = txtTarea.Text.Trim();
 
-                if (nuevoNombre != "")
+            if (cmbTarea.SelectedValue != null && nuevoNombre != "")
+            {
+                DialogResult rta = MessageBox.Show("¿Estás seguro de que querés modificar esta tarea?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rta == DialogResult.Yes)
                 {
                     objTarea.ModificarTarea(id, nuevoNombre);
                     MessageBox.Show("Tarea modificada.", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     objTarea.CargarComboTareas(cmbTarea);
+
+                    txtTarea.Clear();
+                    cmbTarea.SelectedIndex = -1;
                 }
-                else
-                {
-                    MessageBox.Show("Ingrese un nuevo nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una tarea e ingrese un nuevo nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -63,10 +67,11 @@ namespace pryConti_IEFI
             }
             else
             {
-                MessageBox.Show("Ingrese un nombre de tarea.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese el nombre de una tarea.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             txtTarea.Clear();
+            cmbTarea.SelectedIndex = -1;
         }
 
         private void btnEliminarTarea_Click(object sender, EventArgs e)
@@ -74,7 +79,7 @@ namespace pryConti_IEFI
             if (cmbTarea.SelectedValue != null)
             {
                 int id = Convert.ToInt32(cmbTarea.SelectedValue);
-                DialogResult rta = MessageBox.Show("¿Seguro que desea eliminar esta tarea?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult rta = MessageBox.Show("¿Estás seguro de que querés eliminar esta tarea?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (rta == DialogResult.Yes)
                 {
@@ -83,19 +88,25 @@ namespace pryConti_IEFI
                     objTarea.CargarComboTareas(cmbTarea);
                 }
             }
+            else
+            {
+                MessageBox.Show("Seleccione una tarea.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            cmbTarea.SelectedIndex = -1;
         }
 
-        private void btnMostrarTarea_Click(object sender, EventArgs e)
+        private void btnListarTarea_Click(object sender, EventArgs e)
         {
             DataTable dt = objTarea.MostrarTarea();
             if (dt != null)
             {
-                dgvMostrarTarea.DataSource = dt;
+                dgvListarTarea.DataSource = dt;
             }
         }
 
         #endregion
 
+        #region LugarCRUD
         private void btnAgregarLugar_Click(object sender, EventArgs e)
         {
             string nombre = txtLugar.Text.Trim();
@@ -112,25 +123,31 @@ namespace pryConti_IEFI
             }
 
             txtLugar.Clear();
+            cmbLugar.SelectedIndex = -1;
         }
 
         private void btnModificarLugar_Click(object sender, EventArgs e)
         {
-            if (cmbLugar.SelectedValue != null)
-            {
-                int id = Convert.ToInt32(cmbLugar.SelectedValue);
-                string nuevoNombre = txtLugar.Text.Trim();
+            int id = Convert.ToInt32(cmbLugar.SelectedValue);
+            string nuevoNombre = txtLugar.Text.Trim();
 
-                if (nuevoNombre != "")
+            if (cmbLugar.SelectedValue != null && nuevoNombre != "")
+            {
+                DialogResult rta = MessageBox.Show("¿Estás seguro de que querés modificar este lugar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                
+                if (rta == DialogResult.Yes)
                 {
                     objTarea.ModificarLugar(id, nuevoNombre);
                     MessageBox.Show("Lugar modificado.", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     objTarea.CargarComboLugares(cmbLugar);
+
+                    txtLugar.Clear();
+                    cmbLugar.SelectedIndex = -1;
                 }
-                else
-                {
-                    MessageBox.Show("Ingrese un nuevo nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un lugar e ingrese un nuevo nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -139,7 +156,7 @@ namespace pryConti_IEFI
             if (cmbLugar.SelectedValue != null)
             {
                 int id = Convert.ToInt32(cmbLugar.SelectedValue);
-                DialogResult rta = MessageBox.Show("¿Seguro que desea eliminar este lugar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult rta = MessageBox.Show("¿Estás seguro de que querés eliminar este lugar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (rta == DialogResult.Yes)
                 {
@@ -148,15 +165,23 @@ namespace pryConti_IEFI
                     objTarea.CargarComboLugares(cmbLugar);
                 }
             }
+            else
+            {
+                MessageBox.Show("Seleccione un lugar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            cmbLugar.SelectedIndex = -1;
         }
 
-        private void btnMostrarLugar_Click(object sender, EventArgs e)
+        private void btnListarLugar_Click(object sender, EventArgs e)
         {
             DataTable dt = objTarea.MostrarLugar();
             if (dt != null)
             {
-                dgvMostrarLugar.DataSource = dt;
+                dgvListarLugar.DataSource = dt;
             }
         }
+
+        #endregion
     }
 }

@@ -30,8 +30,8 @@
         {
             this.tabAdministrar = new System.Windows.Forms.TabControl();
             this.tpTarea = new System.Windows.Forms.TabPage();
-            this.dgvMostrarTarea = new System.Windows.Forms.DataGridView();
-            this.btnMostrarTarea = new System.Windows.Forms.Button();
+            this.dgvListarTarea = new System.Windows.Forms.DataGridView();
+            this.btnListarTarea = new System.Windows.Forms.Button();
             this.grpTarea = new System.Windows.Forms.GroupBox();
             this.btnEliminarTarea = new System.Windows.Forms.Button();
             this.btnAgregarTarea = new System.Windows.Forms.Button();
@@ -41,23 +41,23 @@
             this.cmbTarea = new System.Windows.Forms.ComboBox();
             this.btnModifcarTarea = new System.Windows.Forms.Button();
             this.tpLugar = new System.Windows.Forms.TabPage();
-            this.dgvMostrarLugar = new System.Windows.Forms.DataGridView();
-            this.btnMostrarLugar = new System.Windows.Forms.Button();
+            this.dgvListarLugar = new System.Windows.Forms.DataGridView();
+            this.btnListarLugar = new System.Windows.Forms.Button();
             this.grpLugar = new System.Windows.Forms.GroupBox();
-            this.btnEliminarLugar = new System.Windows.Forms.Button();
-            this.btnAgregarLugar = new System.Windows.Forms.Button();
             this.txtLugar = new System.Windows.Forms.TextBox();
             this.lblSeleccionarLugar = new System.Windows.Forms.Label();
             this.lblNuevoLugar = new System.Windows.Forms.Label();
             this.cmbLugar = new System.Windows.Forms.ComboBox();
+            this.btnEliminarLugar = new System.Windows.Forms.Button();
+            this.btnAgregarLugar = new System.Windows.Forms.Button();
             this.btnModificarLugar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabAdministrar.SuspendLayout();
             this.tpTarea.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrarTarea)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListarTarea)).BeginInit();
             this.grpTarea.SuspendLayout();
             this.tpLugar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrarLugar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListarLugar)).BeginInit();
             this.grpLugar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,8 +75,8 @@
             // tpTarea
             // 
             this.tpTarea.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.tpTarea.Controls.Add(this.dgvMostrarTarea);
-            this.tpTarea.Controls.Add(this.btnMostrarTarea);
+            this.tpTarea.Controls.Add(this.dgvListarTarea);
+            this.tpTarea.Controls.Add(this.btnListarTarea);
             this.tpTarea.Controls.Add(this.grpTarea);
             this.tpTarea.Location = new System.Drawing.Point(4, 25);
             this.tpTarea.Name = "tpTarea";
@@ -85,27 +85,27 @@
             this.tpTarea.TabIndex = 0;
             this.tpTarea.Text = "Tarea";
             // 
-            // dgvMostrarTarea
+            // dgvListarTarea
             // 
-            this.dgvMostrarTarea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMostrarTarea.Location = new System.Drawing.Point(172, 163);
-            this.dgvMostrarTarea.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvMostrarTarea.Name = "dgvMostrarTarea";
-            this.dgvMostrarTarea.Size = new System.Drawing.Size(272, 130);
-            this.dgvMostrarTarea.TabIndex = 18;
+            this.dgvListarTarea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListarTarea.Location = new System.Drawing.Point(163, 163);
+            this.dgvListarTarea.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvListarTarea.Name = "dgvListarTarea";
+            this.dgvListarTarea.Size = new System.Drawing.Size(272, 130);
+            this.dgvListarTarea.TabIndex = 18;
             // 
-            // btnMostrarTarea
+            // btnListarTarea
             // 
-            this.btnMostrarTarea.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMostrarTarea.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnMostrarTarea.Location = new System.Drawing.Point(234, 301);
-            this.btnMostrarTarea.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMostrarTarea.Name = "btnMostrarTarea";
-            this.btnMostrarTarea.Size = new System.Drawing.Size(148, 28);
-            this.btnMostrarTarea.TabIndex = 17;
-            this.btnMostrarTarea.Text = "MOSTRAR";
-            this.btnMostrarTarea.UseVisualStyleBackColor = false;
-            this.btnMostrarTarea.Click += new System.EventHandler(this.btnMostrarTarea_Click);
+            this.btnListarTarea.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnListarTarea.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnListarTarea.Location = new System.Drawing.Point(225, 301);
+            this.btnListarTarea.Margin = new System.Windows.Forms.Padding(4);
+            this.btnListarTarea.Name = "btnListarTarea";
+            this.btnListarTarea.Size = new System.Drawing.Size(148, 28);
+            this.btnListarTarea.TabIndex = 17;
+            this.btnListarTarea.Text = "Listar";
+            this.btnListarTarea.UseVisualStyleBackColor = false;
+            this.btnListarTarea.Click += new System.EventHandler(this.btnListarTarea_Click);
             // 
             // grpTarea
             // 
@@ -127,7 +127,7 @@
             // 
             this.btnEliminarTarea.BackColor = System.Drawing.Color.DarkGreen;
             this.btnEliminarTarea.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEliminarTarea.Location = new System.Drawing.Point(393, 83);
+            this.btnEliminarTarea.Location = new System.Drawing.Point(393, 106);
             this.btnEliminarTarea.Name = "btnEliminarTarea";
             this.btnEliminarTarea.Size = new System.Drawing.Size(149, 28);
             this.btnEliminarTarea.TabIndex = 10;
@@ -139,7 +139,7 @@
             // 
             this.btnAgregarTarea.BackColor = System.Drawing.Color.DarkGreen;
             this.btnAgregarTarea.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAgregarTarea.Location = new System.Drawing.Point(39, 83);
+            this.btnAgregarTarea.Location = new System.Drawing.Point(39, 106);
             this.btnAgregarTarea.Name = "btnAgregarTarea";
             this.btnAgregarTarea.Size = new System.Drawing.Size(149, 28);
             this.btnAgregarTarea.TabIndex = 8;
@@ -149,7 +149,7 @@
             // 
             // txtTarea
             // 
-            this.txtTarea.Location = new System.Drawing.Point(101, 36);
+            this.txtTarea.Location = new System.Drawing.Point(216, 63);
             this.txtTarea.Name = "txtTarea";
             this.txtTarea.Size = new System.Drawing.Size(149, 22);
             this.txtTarea.TabIndex = 3;
@@ -157,7 +157,7 @@
             // lblSeleccionarTarea
             // 
             this.lblSeleccionarTarea.AutoSize = true;
-            this.lblSeleccionarTarea.Location = new System.Drawing.Point(281, 39);
+            this.lblSeleccionarTarea.Location = new System.Drawing.Point(89, 36);
             this.lblSeleccionarTarea.Name = "lblSeleccionarTarea";
             this.lblSeleccionarTarea.Size = new System.Drawing.Size(121, 16);
             this.lblSeleccionarTarea.TabIndex = 0;
@@ -166,7 +166,7 @@
             // lblNuevaTarea
             // 
             this.lblNuevaTarea.AutoSize = true;
-            this.lblNuevaTarea.Location = new System.Drawing.Point(6, 39);
+            this.lblNuevaTarea.Location = new System.Drawing.Point(121, 66);
             this.lblNuevaTarea.Name = "lblNuevaTarea";
             this.lblNuevaTarea.Size = new System.Drawing.Size(89, 16);
             this.lblNuevaTarea.TabIndex = 0;
@@ -176,7 +176,7 @@
             // 
             this.cmbTarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTarea.FormattingEnabled = true;
-            this.cmbTarea.Location = new System.Drawing.Point(408, 36);
+            this.cmbTarea.Location = new System.Drawing.Point(216, 33);
             this.cmbTarea.Name = "cmbTarea";
             this.cmbTarea.Size = new System.Drawing.Size(149, 24);
             this.cmbTarea.TabIndex = 15;
@@ -185,7 +185,7 @@
             // 
             this.btnModifcarTarea.BackColor = System.Drawing.Color.DarkGreen;
             this.btnModifcarTarea.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnModifcarTarea.Location = new System.Drawing.Point(216, 83);
+            this.btnModifcarTarea.Location = new System.Drawing.Point(216, 106);
             this.btnModifcarTarea.Name = "btnModifcarTarea";
             this.btnModifcarTarea.Size = new System.Drawing.Size(149, 28);
             this.btnModifcarTarea.TabIndex = 14;
@@ -196,8 +196,8 @@
             // tpLugar
             // 
             this.tpLugar.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.tpLugar.Controls.Add(this.dgvMostrarLugar);
-            this.tpLugar.Controls.Add(this.btnMostrarLugar);
+            this.tpLugar.Controls.Add(this.dgvListarLugar);
+            this.tpLugar.Controls.Add(this.btnListarLugar);
             this.tpLugar.Controls.Add(this.grpLugar);
             this.tpLugar.Controls.Add(this.button1);
             this.tpLugar.Location = new System.Drawing.Point(4, 25);
@@ -207,27 +207,27 @@
             this.tpLugar.TabIndex = 1;
             this.tpLugar.Text = "Lugar";
             // 
-            // dgvMostrarLugar
+            // dgvListarLugar
             // 
-            this.dgvMostrarLugar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMostrarLugar.Location = new System.Drawing.Point(173, 163);
-            this.dgvMostrarLugar.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvMostrarLugar.Name = "dgvMostrarLugar";
-            this.dgvMostrarLugar.Size = new System.Drawing.Size(272, 130);
-            this.dgvMostrarLugar.TabIndex = 26;
+            this.dgvListarLugar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListarLugar.Location = new System.Drawing.Point(163, 163);
+            this.dgvListarLugar.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvListarLugar.Name = "dgvListarLugar";
+            this.dgvListarLugar.Size = new System.Drawing.Size(272, 130);
+            this.dgvListarLugar.TabIndex = 26;
             // 
-            // btnMostrarLugar
+            // btnListarLugar
             // 
-            this.btnMostrarLugar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMostrarLugar.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnMostrarLugar.Location = new System.Drawing.Point(235, 301);
-            this.btnMostrarLugar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMostrarLugar.Name = "btnMostrarLugar";
-            this.btnMostrarLugar.Size = new System.Drawing.Size(148, 28);
-            this.btnMostrarLugar.TabIndex = 25;
-            this.btnMostrarLugar.Text = "MOSTRAR";
-            this.btnMostrarLugar.UseVisualStyleBackColor = false;
-            this.btnMostrarLugar.Click += new System.EventHandler(this.btnMostrarLugar_Click);
+            this.btnListarLugar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnListarLugar.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnListarLugar.Location = new System.Drawing.Point(225, 301);
+            this.btnListarLugar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnListarLugar.Name = "btnListarLugar";
+            this.btnListarLugar.Size = new System.Drawing.Size(148, 28);
+            this.btnListarLugar.TabIndex = 25;
+            this.btnListarLugar.Text = "Listar";
+            this.btnListarLugar.UseVisualStyleBackColor = false;
+            this.btnListarLugar.Click += new System.EventHandler(this.btnListarLugar_Click);
             // 
             // grpLugar
             // 
@@ -238,18 +238,52 @@
             this.grpLugar.Controls.Add(this.btnEliminarLugar);
             this.grpLugar.Controls.Add(this.btnAgregarLugar);
             this.grpLugar.Controls.Add(this.btnModificarLugar);
-            this.grpLugar.Location = new System.Drawing.Point(10, 6);
+            this.grpLugar.Location = new System.Drawing.Point(9, 6);
             this.grpLugar.Name = "grpLugar";
             this.grpLugar.Size = new System.Drawing.Size(580, 140);
             this.grpLugar.TabIndex = 23;
             this.grpLugar.TabStop = false;
             this.grpLugar.Text = "Agregar, Modificar o Eliminar";
             // 
+            // txtLugar
+            // 
+            this.txtLugar.Location = new System.Drawing.Point(216, 62);
+            this.txtLugar.Name = "txtLugar";
+            this.txtLugar.Size = new System.Drawing.Size(149, 22);
+            this.txtLugar.TabIndex = 3;
+            // 
+            // lblSeleccionarLugar
+            // 
+            this.lblSeleccionarLugar.AutoSize = true;
+            this.lblSeleccionarLugar.Location = new System.Drawing.Point(88, 35);
+            this.lblSeleccionarLugar.Name = "lblSeleccionarLugar";
+            this.lblSeleccionarLugar.Size = new System.Drawing.Size(122, 16);
+            this.lblSeleccionarLugar.TabIndex = 0;
+            this.lblSeleccionarLugar.Text = "Seleccionar Lugar:";
+            // 
+            // lblNuevoLugar
+            // 
+            this.lblNuevoLugar.AutoSize = true;
+            this.lblNuevoLugar.Location = new System.Drawing.Point(119, 65);
+            this.lblNuevoLugar.Name = "lblNuevoLugar";
+            this.lblNuevoLugar.Size = new System.Drawing.Size(91, 16);
+            this.lblNuevoLugar.TabIndex = 0;
+            this.lblNuevoLugar.Text = "Nuevo Lugar:";
+            // 
+            // cmbLugar
+            // 
+            this.cmbLugar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLugar.FormattingEnabled = true;
+            this.cmbLugar.Location = new System.Drawing.Point(216, 32);
+            this.cmbLugar.Name = "cmbLugar";
+            this.cmbLugar.Size = new System.Drawing.Size(149, 24);
+            this.cmbLugar.TabIndex = 15;
+            // 
             // btnEliminarLugar
             // 
             this.btnEliminarLugar.BackColor = System.Drawing.Color.DarkGreen;
             this.btnEliminarLugar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEliminarLugar.Location = new System.Drawing.Point(401, 87);
+            this.btnEliminarLugar.Location = new System.Drawing.Point(394, 106);
             this.btnEliminarLugar.Name = "btnEliminarLugar";
             this.btnEliminarLugar.Size = new System.Drawing.Size(149, 28);
             this.btnEliminarLugar.TabIndex = 10;
@@ -261,7 +295,7 @@
             // 
             this.btnAgregarLugar.BackColor = System.Drawing.Color.DarkGreen;
             this.btnAgregarLugar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAgregarLugar.Location = new System.Drawing.Point(31, 87);
+            this.btnAgregarLugar.Location = new System.Drawing.Point(38, 106);
             this.btnAgregarLugar.Name = "btnAgregarLugar";
             this.btnAgregarLugar.Size = new System.Drawing.Size(149, 28);
             this.btnAgregarLugar.TabIndex = 8;
@@ -269,45 +303,11 @@
             this.btnAgregarLugar.UseVisualStyleBackColor = false;
             this.btnAgregarLugar.Click += new System.EventHandler(this.btnAgregarLugar_Click);
             // 
-            // txtLugar
-            // 
-            this.txtLugar.Location = new System.Drawing.Point(103, 36);
-            this.txtLugar.Name = "txtLugar";
-            this.txtLugar.Size = new System.Drawing.Size(149, 22);
-            this.txtLugar.TabIndex = 3;
-            // 
-            // lblSeleccionarLugar
-            // 
-            this.lblSeleccionarLugar.AutoSize = true;
-            this.lblSeleccionarLugar.Location = new System.Drawing.Point(284, 39);
-            this.lblSeleccionarLugar.Name = "lblSeleccionarLugar";
-            this.lblSeleccionarLugar.Size = new System.Drawing.Size(122, 16);
-            this.lblSeleccionarLugar.TabIndex = 0;
-            this.lblSeleccionarLugar.Text = "Seleccionar Lugar:";
-            // 
-            // lblNuevoLugar
-            // 
-            this.lblNuevoLugar.AutoSize = true;
-            this.lblNuevoLugar.Location = new System.Drawing.Point(6, 39);
-            this.lblNuevoLugar.Name = "lblNuevoLugar";
-            this.lblNuevoLugar.Size = new System.Drawing.Size(91, 16);
-            this.lblNuevoLugar.TabIndex = 0;
-            this.lblNuevoLugar.Text = "Nuevo Lugar:";
-            // 
-            // cmbLugar
-            // 
-            this.cmbLugar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLugar.FormattingEnabled = true;
-            this.cmbLugar.Location = new System.Drawing.Point(412, 36);
-            this.cmbLugar.Name = "cmbLugar";
-            this.cmbLugar.Size = new System.Drawing.Size(149, 24);
-            this.cmbLugar.TabIndex = 15;
-            // 
             // btnModificarLugar
             // 
             this.btnModificarLugar.BackColor = System.Drawing.Color.DarkGreen;
             this.btnModificarLugar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnModificarLugar.Location = new System.Drawing.Point(216, 87);
+            this.btnModificarLugar.Location = new System.Drawing.Point(216, 106);
             this.btnModificarLugar.Name = "btnModificarLugar";
             this.btnModificarLugar.Size = new System.Drawing.Size(149, 28);
             this.btnModificarLugar.TabIndex = 14;
@@ -342,11 +342,11 @@
             this.Load += new System.EventHandler(this.frmAdministrarTarea_Load);
             this.tabAdministrar.ResumeLayout(false);
             this.tpTarea.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrarTarea)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListarTarea)).EndInit();
             this.grpTarea.ResumeLayout(false);
             this.grpTarea.PerformLayout();
             this.tpLugar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrarLugar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListarLugar)).EndInit();
             this.grpLugar.ResumeLayout(false);
             this.grpLugar.PerformLayout();
             this.ResumeLayout(false);
@@ -357,8 +357,8 @@
 
         private System.Windows.Forms.TabControl tabAdministrar;
         private System.Windows.Forms.TabPage tpTarea;
-        private System.Windows.Forms.DataGridView dgvMostrarTarea;
-        private System.Windows.Forms.Button btnMostrarTarea;
+        private System.Windows.Forms.DataGridView dgvListarTarea;
+        private System.Windows.Forms.Button btnListarTarea;
         private System.Windows.Forms.GroupBox grpTarea;
         private System.Windows.Forms.Button btnAgregarTarea;
         private System.Windows.Forms.TextBox txtTarea;
@@ -369,8 +369,8 @@
         private System.Windows.Forms.ComboBox cmbTarea;
         private System.Windows.Forms.Button btnEliminarTarea;
         private System.Windows.Forms.Button btnModifcarTarea;
-        private System.Windows.Forms.DataGridView dgvMostrarLugar;
-        private System.Windows.Forms.Button btnMostrarLugar;
+        private System.Windows.Forms.DataGridView dgvListarLugar;
+        private System.Windows.Forms.Button btnListarLugar;
         private System.Windows.Forms.Button btnEliminarLugar;
         private System.Windows.Forms.Label lblSeleccionarLugar;
         private System.Windows.Forms.Button btnModificarLugar;

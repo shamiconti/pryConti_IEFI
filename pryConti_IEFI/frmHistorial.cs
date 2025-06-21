@@ -16,5 +16,16 @@ namespace pryConti_IEFI
         {
             InitializeComponent();
         }
+
+        private void frmHistorial_Load(object sender, EventArgs e)
+        {
+            clsTareas objTareas = new clsTareas();
+            DataTable tabla = objTareas.ObtenerTareas();
+
+            if (tabla != null)
+            {
+                dgvHistorial.DataSource = tabla;
+            }
+        }
     }
 }

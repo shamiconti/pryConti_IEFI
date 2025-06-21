@@ -19,42 +19,6 @@ namespace pryConti_IEFI
 
         clsUsuario objUsuario = new clsUsuario();
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            string usuario = txtUsuario.Text.Trim();
-            string contraseña = txtContraseña.Text.Trim();
-            int idCategoria = Convert.ToInt32(cmbCategoria.SelectedValue);
-
-            // Validar
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contraseña))
-            {
-                MessageBox.Show("Por favor, complete todos los campos.");
-                return;
-            }
-
-            try
-            {
-                objUsuario.AgregarUsuario(usuario, contraseña, idCategoria);
-
-                MessageBox.Show("Usuario agregado correctamente.");
-
-                // Limpiar controles
-                txtUsuario.Clear();
-                txtContraseña.Clear();
-                cmbCategoria.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar usuario: " + ex.Message);
-            }
-        }
-
-        private void tpAgregarEliminar_Click(object sender, EventArgs e)
-        {
-            objUsuario.CargarComboCategorias(cmbCategoria);
-            cmbCategoria.SelectedIndex = -1;
-        }
-
         private void frmUsuario_Load(object sender, EventArgs e)
         {
             objUsuario.CargarComboCategorias(cmbCategoria);
@@ -64,65 +28,139 @@ namespace pryConti_IEFI
             cmbEliminarUsuario.SelectedIndex = -1;
 
             objUsuario.CargarComboCategorias(cmbModificarCategoria);
-            cmbEliminarUsuario.SelectedIndex = -1;
+
+            objUsuario.CargarComboUsuarios(cmbUsuarioModificar);
+            cmbUsuarioModificar.SelectedIndex = -1;
+
+            ValidarDatos();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (cmbEliminarUsuario.SelectedIndex != -1)
-            {
-                int idUsuario = Convert.ToInt32(cmbEliminarUsuario.SelectedValue);
+            string usuario = txtUsuario.Text.Trim();
+            string contraseña = txtContraseña.Text.Trim();
+            int idCategoria = Convert.ToInt32(cmbCategoria.SelectedValue);
 
-                // Llamar al método para eliminar
-                objUsuario.EliminarUsuario(idUsuario);
+            objUsuario.AgregarUsuario(usuario, contraseña, idCategoria);
 
-                MessageBox.Show("Usuario eliminado correctamente.");
+            MessageBox.Show("Usuario agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Recargar el combo para actualizar la lista sin el eliminado
-                objUsuario.CargarComboUsuarios(cmbEliminarUsuario);
-                cmbEliminarUsuario.SelectedIndex = -1;
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un usuario para eliminar.");
-            }
+            objUsuario.CargarComboUsuarios(cmbUsuarioModificar);
+            objUsuario.CargarComboUsuarios(cmbEliminarUsuario);
+
+            cmbEliminarUsuario.SelectedIndex = -1;
+            cmbUsuarioModificar.SelectedIndex = -1;
+
+            txtUsuario.Clear();
+            txtContraseña.Clear();
+            cmbCategoria.SelectedIndex = -1;
         }
 
         private void btnModifcar_Click(object sender, EventArgs e)
         {
+            int idUsuario = Convert.ToInt32(cmbUsuarioModificar.SelectedValue);
             string usuario = txtModificarUsuario.Text.Trim();
             string contraseña = txtModificarContraseña.Text.Trim();
-            int idCategoria;
+            int idCategoria = Convert.ToInt32(cmbModificarCategoria.SelectedValue); ;
 
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contraseña) || cmbModificarCategoria.SelectedIndex == -1)
+            DialogResult rta = MessageBox.Show("¿Estás seguro de que querés modificar este usuario?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (rta == DialogResult.Yes)
             {
-                MessageBox.Show("Por favor, complete todos los campos.");
-                return;
-            }
+                objUsuario.ModificarUsuario(idUsuario, usuario, contraseña, idCategoria);
 
-            try
-            {
-                idCategoria = Convert.ToInt32(cmbModificarCategoria.SelectedValue);
+                MessageBox.Show("Usuario modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                objUsuario.ModificarUsuario(usuario, contraseña, idCategoria);
+                //Recargar combo
+                objUsuario.CargarComboUsuarios(cmbUsuarioModificar);
+                objUsuario.CargarComboUsuarios(cmbEliminarUsuario);
+                cmbEliminarUsuario.SelectedIndex = -1;
 
                 txtModificarUsuario.Clear();
                 txtModificarContraseña.Clear();
-                cmbModificarCategoria.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al modificar usuario: " + ex.Message);
+                cmbUsuarioModificar.SelectedIndex = -1;
             }
         }
 
-        private void btnMostrar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {            
+            int idUsuario = Convert.ToInt32(cmbEliminarUsuario.SelectedValue);
+
+            DialogResult rta = MessageBox.Show("¿Estás seguro de que querés eliminar este usuario?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (rta == DialogResult.Yes)
+            {
+                objUsuario.EliminarUsuario(idUsuario);
+
+                MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //Recargar el combo para actualizar la lista sin el eliminado
+                objUsuario.CargarComboUsuarios(cmbEliminarUsuario);
+                objUsuario.CargarComboUsuarios(cmbUsuarioModificar);
+
+                cmbUsuarioModificar.SelectedIndex = -1;
+                cmbEliminarUsuario.SelectedIndex = -1;
+            }
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
         {
             DataTable dt = objUsuario.ObtenerUsuarios();
             if (dt != null)
             {
-                dgvMostrar.DataSource = dt;
+                dgvListar.DataSource = dt;
             }
+        }
+
+        private void ValidarDatos()
+        {
+            btnAgregar.Enabled =
+                txtUsuario.Text != "" &&
+                txtContraseña.Text != "" &&
+                cmbCategoria.SelectedIndex != -1;
+
+            btnModifcar.Enabled =
+                cmbUsuarioModificar.SelectedIndex != -1 &&
+                txtModificarUsuario.Text != "" ||
+                txtModificarContraseña.Text != "";
+
+            btnEliminar.Enabled = cmbEliminarUsuario.SelectedIndex != -1;
+        }
+
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void txtContraseña_TextChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void txtModificarUsuario_TextChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void txtModificarContraseña_TextChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void cmbEliminarUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void cmbUsuarioModificar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
         }
     }
 }

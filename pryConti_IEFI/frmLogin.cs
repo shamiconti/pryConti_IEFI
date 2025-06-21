@@ -23,7 +23,7 @@ namespace pryConti_IEFI
         public string usuario;
         public int idCategoria;
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void btnIngresar_Click(object sender, EventArgs e)
         {
             var fila = objUsuario.BuscarUsuario(txtUsuario.Text.Trim(), txtContraseña.Text.Trim());
 
@@ -32,23 +32,19 @@ namespace pryConti_IEFI
                 usuario = fila["Usuario"].ToString();
                 idCategoria = Convert.ToInt32(fila["IdCategoria"]);
 
-                MessageBox.Show("Bienvenido " + usuario);
+                MessageBox.Show("Bienvenido, " + usuario + ".", "Acceso concedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 frmMain nuevoForm = new frmMain();
                 nuevoForm.usuario = usuario;
                 nuevoForm.idCategoria = idCategoria;
                 nuevoForm.Show();
+
                 this.Hide();
             }
             else
             {
                 MessageBox.Show("Usuario o contraseña incorrectos", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

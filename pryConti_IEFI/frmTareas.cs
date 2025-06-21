@@ -26,11 +26,13 @@ namespace pryConti_IEFI
         {
             objTarea.CargarComboTareas(cmbTarea);
             objTarea.CargarComboLugares(cmbLugar);
+
+            ValidarDatos();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            DateTime fecha = dtpFecha.Value.Date; // solo fecha, sin hora
+            DateTime fecha = dtpFecha.Value.Date;
             int idTarea = Convert.ToInt32(cmbTarea.SelectedValue);
             int idLugar = Convert.ToInt32(cmbLugar.SelectedValue);
 
@@ -97,6 +99,47 @@ namespace pryConti_IEFI
             chkRecibo.Checked = false;
 
             rtbComentario.Clear();
+        }
+
+        private void ValidarDatos()
+        {
+            btnGrabar.Enabled =
+                chkInsumo.Checked ||
+                chkEstudio.Checked ||
+                chkVacaciones.Checked ||
+                chkSalario.Checked ||
+                chkRecibo.Checked ||
+                !string.IsNullOrWhiteSpace(rtbComentario.Text);
+        }
+
+        private void chkInsumo_CheckedChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void chkEstudio_CheckedChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void chkVacaciones_CheckedChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void chkSalario_CheckedChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void chkRecibo_CheckedChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+
+        private void rtbComentario_TextChanged(object sender, EventArgs e)
+        {
+            ValidarDatos();
         }
     }
 }
