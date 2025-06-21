@@ -48,17 +48,25 @@
             this.tpListar = new System.Windows.Forms.TabPage();
             this.btnListar = new System.Windows.Forms.Button();
             this.dgvPersona = new System.Windows.Forms.DataGridView();
+            this.tpEliminar = new System.Windows.Forms.TabPage();
+            this.grpEliminar = new System.Windows.Forms.GroupBox();
+            this.cmbEliminar = new System.Windows.Forms.ComboBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.lblEliminarUsuario = new System.Windows.Forms.Label();
             this.tcDatosPersonales.SuspendLayout();
             this.tpAgregar.SuspendLayout();
             this.grpIngresarDatos.SuspendLayout();
             this.tpListar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersona)).BeginInit();
+            this.tpEliminar.SuspendLayout();
+            this.grpEliminar.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcDatosPersonales
             // 
             this.tcDatosPersonales.Controls.Add(this.tpAgregar);
             this.tcDatosPersonales.Controls.Add(this.tpListar);
+            this.tcDatosPersonales.Controls.Add(this.tpEliminar);
             this.tcDatosPersonales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcDatosPersonales.Location = new System.Drawing.Point(0, 0);
             this.tcDatosPersonales.Name = "tcDatosPersonales";
@@ -240,6 +248,59 @@
             this.dgvPersona.Size = new System.Drawing.Size(406, 200);
             this.dgvPersona.TabIndex = 2;
             // 
+            // tpEliminar
+            // 
+            this.tpEliminar.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.tpEliminar.Controls.Add(this.grpEliminar);
+            this.tpEliminar.Location = new System.Drawing.Point(4, 25);
+            this.tpEliminar.Name = "tpEliminar";
+            this.tpEliminar.Padding = new System.Windows.Forms.Padding(3);
+            this.tpEliminar.Size = new System.Drawing.Size(588, 261);
+            this.tpEliminar.TabIndex = 2;
+            this.tpEliminar.Text = "Eliminar";
+            // 
+            // grpEliminar
+            // 
+            this.grpEliminar.Controls.Add(this.cmbEliminar);
+            this.grpEliminar.Controls.Add(this.btnEliminar);
+            this.grpEliminar.Controls.Add(this.lblEliminarUsuario);
+            this.grpEliminar.Location = new System.Drawing.Point(143, 63);
+            this.grpEliminar.Name = "grpEliminar";
+            this.grpEliminar.Size = new System.Drawing.Size(303, 134);
+            this.grpEliminar.TabIndex = 15;
+            this.grpEliminar.TabStop = false;
+            this.grpEliminar.Text = "Eliminar";
+            // 
+            // cmbEliminar
+            // 
+            this.cmbEliminar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEliminar.FormattingEnabled = true;
+            this.cmbEliminar.Location = new System.Drawing.Point(104, 39);
+            this.cmbEliminar.Name = "cmbEliminar";
+            this.cmbEliminar.Size = new System.Drawing.Size(160, 24);
+            this.cmbEliminar.TabIndex = 12;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEliminar.Location = new System.Drawing.Point(104, 68);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(160, 46);
+            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // lblEliminarUsuario
+            // 
+            this.lblEliminarUsuario.AutoSize = true;
+            this.lblEliminarUsuario.Location = new System.Drawing.Point(6, 42);
+            this.lblEliminarUsuario.Name = "lblEliminarUsuario";
+            this.lblEliminarUsuario.Size = new System.Drawing.Size(60, 16);
+            this.lblEliminarUsuario.TabIndex = 0;
+            this.lblEliminarUsuario.Text = "Usuario:";
+            // 
             // frmDatosPersonales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -253,12 +314,16 @@
             this.Name = "frmDatosPersonales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos Personales";
+            this.Load += new System.EventHandler(this.frmDatosPersonales_Load);
             this.tcDatosPersonales.ResumeLayout(false);
             this.tpAgregar.ResumeLayout(false);
             this.grpIngresarDatos.ResumeLayout(false);
             this.grpIngresarDatos.PerformLayout();
             this.tpListar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersona)).EndInit();
+            this.tpEliminar.ResumeLayout(false);
+            this.grpEliminar.ResumeLayout(false);
+            this.grpEliminar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -284,5 +349,10 @@
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.DataGridView dgvPersona;
         private System.Windows.Forms.Button btnListar;
+        private System.Windows.Forms.TabPage tpEliminar;
+        private System.Windows.Forms.GroupBox grpEliminar;
+        private System.Windows.Forms.ComboBox cmbEliminar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Label lblEliminarUsuario;
     }
 }

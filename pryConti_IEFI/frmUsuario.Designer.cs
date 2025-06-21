@@ -333,7 +333,7 @@
             // lblEliminarUsuario
             // 
             this.lblEliminarUsuario.AutoSize = true;
-            this.lblEliminarUsuario.Location = new System.Drawing.Point(6, 39);
+            this.lblEliminarUsuario.Location = new System.Drawing.Point(6, 42);
             this.lblEliminarUsuario.Name = "lblEliminarUsuario";
             this.lblEliminarUsuario.Size = new System.Drawing.Size(60, 16);
             this.lblEliminarUsuario.TabIndex = 0;

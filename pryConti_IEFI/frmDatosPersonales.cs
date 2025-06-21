@@ -67,6 +67,8 @@ namespace pryConti_IEFI
                 string direccion = txtDireccion.Text.Trim();
 
                 objUsuario.AgregarPersona(nombre, apellido, dni, telefono, email, direccion);
+                objUsuario.CargarComboPersonas(cmbEliminar);
+                cmbEliminar.SelectedIndex = -1;
 
                 txtNombre.Clear();
                 txtApellido.Clear();
@@ -85,6 +87,37 @@ namespace pryConti_IEFI
             {
                 dgvPersona.DataSource = tabla;
             }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (cmbEliminar.SelectedIndex != -1)
+            {
+                int idPersona = Convert.ToInt32(cmbEliminar.SelectedValue);
+
+                DialogResult rta = MessageBox.Show("¿Estás seguro de que querés eliminar a esta persona?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (rta == DialogResult.Yes)
+                {
+                    objUsuario.EliminarPersona(idPersona);
+
+                    MessageBox.Show("Persona eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //Recargar el combo para actualizar la lista sin el eliminado
+                    objUsuario.CargarComboPersonas(cmbEliminar);
+                    cmbEliminar.SelectedIndex = -1;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una tarea.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void frmDatosPersonales_Load(object sender, EventArgs e)
+        {
+            objUsuario.CargarComboPersonas(cmbEliminar);
+            cmbEliminar.SelectedIndex = -1;
         }
     }
 }

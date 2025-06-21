@@ -11,6 +11,77 @@ namespace pryConti_IEFI
 {
     internal class clsUsuario
     {
+        #region CargarCombos
+        public void CargarComboCategorias(ComboBox combo)
+        {
+            try
+            {
+                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
+                {
+                    string sql = "SELECT IdCategoria, Nombre FROM Categoria";
+
+                    OleDbDataAdapter adaptador = new OleDbDataAdapter(sql, conexionBD);
+                    DataTable dt = new DataTable();
+
+                    adaptador.Fill(dt);
+
+                    combo.DataSource = dt;
+                    combo.DisplayMember = "Nombre";        //Lo que ve el usuario
+                    combo.ValueMember = "IdCategoria";     //Lo que se guarda internamente
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías:\n" + ex.Message, "Error al cargar combo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void CargarComboUsuarios(ComboBox combo)
+        {
+            try
+            {
+                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
+                {
+                    string sql = "SELECT IdUsuario, Usuario FROM Usuario";
+                    OleDbDataAdapter adaptador = new OleDbDataAdapter(sql, conexionBD);
+                    DataTable dt = new DataTable();
+                    adaptador.Fill(dt);
+
+                    combo.DataSource = dt;
+                    combo.DisplayMember = "Usuario";
+                    combo.ValueMember = "IdUsuario";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar usuarios:\n" + ex.Message, "Error al cargar combo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void CargarComboPersonas(ComboBox combo)
+        {
+            try
+            {
+                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
+                {
+                    string sql = "SELECT IdPersona, Nombre FROM Persona";
+                    OleDbDataAdapter adaptador = new OleDbDataAdapter(sql, conexionBD);
+                    DataTable dt = new DataTable();
+                    adaptador.Fill(dt);
+
+                    combo.DataSource = dt;
+                    combo.DisplayMember = "Nombre";
+                    combo.ValueMember = "IdPersona";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar personas:\n" + ex.Message, "Error al cargar combo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
         //Busca usuario por nombre y contraseña, devuelve fila o null
         public DataRow BuscarUsuario(string usuario, string contraseña)
         {
@@ -82,52 +153,6 @@ namespace pryConti_IEFI
             {
                 MessageBox.Show("Error al obtener los logs:\n" + ex.Message, "Error al obtener logs", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
-            }
-        }
-
-        public void CargarComboCategorias(ComboBox combo)
-        {
-            try
-            {
-                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
-                {
-                    string sql = "SELECT IdCategoria, Nombre FROM Categoria";
-
-                    OleDbDataAdapter adaptador = new OleDbDataAdapter(sql, conexionBD);
-                    DataTable dt = new DataTable();
-
-                    adaptador.Fill(dt);
-
-                    combo.DataSource = dt;
-                    combo.DisplayMember = "Nombre";        //Lo que ve el usuario
-                    combo.ValueMember = "IdCategoria";     //Lo que se guarda internamente
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar categorías:\n" + ex.Message, "Error al cargar combo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void CargarComboUsuarios(ComboBox combo)
-        {
-            try
-            {
-                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
-                {
-                    string sql = "SELECT IdUsuario, Usuario FROM Usuario";
-                    OleDbDataAdapter adaptador = new OleDbDataAdapter(sql, conexionBD);
-                    DataTable dt = new DataTable();
-                    adaptador.Fill(dt);
-
-                    combo.DataSource = dt;
-                    combo.DisplayMember = "Usuario";
-                    combo.ValueMember = "IdUsuario";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar usuarios:\n" + ex.Message, "Error al cargar combo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -271,6 +296,29 @@ namespace pryConti_IEFI
             {
                 MessageBox.Show("Error al obtener personas:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+        }
+
+        public void EliminarPersona(int idPersona)
+        {
+            try
+            {
+                using (OleDbConnection conexionBD = clsConexion.ObtenerConexion())
+                {
+                    string sql = "DELETE FROM Persona WHERE IdPersona = ?";
+
+                    OleDbCommand cmd = new OleDbCommand(sql, conexionBD);
+                    cmd.Parameters.AddWithValue("?", idPersona);
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+
+                    if (filasAfectadas == 0)
+                        MessageBox.Show("No se encontró una persona con ese Id.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar usuario:\n" + ex.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
