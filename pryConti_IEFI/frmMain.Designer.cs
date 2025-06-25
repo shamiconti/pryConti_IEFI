@@ -158,6 +158,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Ivory;
             this.statusStrip1.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblUsuario,
@@ -170,14 +171,16 @@
             // 
             // lblUsuario
             // 
+            this.lblUsuario.BackColor = System.Drawing.Color.Honeydew;
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(563, 17);
+            this.lblUsuario.Size = new System.Drawing.Size(532, 17);
             this.lblUsuario.Spring = true;
             this.lblUsuario.Text = "Usuario";
             this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblFecha
             // 
+            this.lblFecha.BackColor = System.Drawing.Color.Ivory;
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblFecha.Size = new System.Drawing.Size(44, 17);

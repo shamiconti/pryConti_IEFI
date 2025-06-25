@@ -305,7 +305,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(596, 290);
             this.Controls.Add(this.tcDatosPersonales);
             this.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

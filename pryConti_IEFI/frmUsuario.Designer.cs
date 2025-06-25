@@ -102,7 +102,7 @@
             this.grpIngresarDatos.Controls.Add(this.lblCategoria);
             this.grpIngresarDatos.Controls.Add(this.lblContraseña);
             this.grpIngresarDatos.Controls.Add(this.lblUsuario);
-            this.grpIngresarDatos.Location = new System.Drawing.Point(150, 57);
+            this.grpIngresarDatos.Location = new System.Drawing.Point(132, 53);
             this.grpIngresarDatos.Name = "grpIngresarDatos";
             this.grpIngresarDatos.Size = new System.Drawing.Size(312, 205);
             this.grpIngresarDatos.TabIndex = 8;
@@ -377,7 +377,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(620, 320);
             this.Controls.Add(this.tabUsuarios);
             this.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
